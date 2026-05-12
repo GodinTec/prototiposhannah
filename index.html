@@ -109,9 +109,91 @@
     line-height: 1.8;
   }
   .footer-note a { color: #8888dd; }
+
+  /* LOGIN OVERLAY */
+  #login-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #0a0a10;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+  }
+  #login-overlay .lock-icon {
+    font-size: 48px;
+    opacity: 0.3;
+  }
+  #login-overlay h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #f0e8dc;
+    font-weight: 600;
+  }
+  #login-overlay p {
+    color: #6666aa;
+    font-size: 14px;
+    max-width: 360px;
+    text-align: center;
+    line-height: 1.6;
+  }
+  #login-overlay input {
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    font-size: 16px;
+    width: 300px;
+    text-align: center;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+  }
+  #login-overlay input:focus {
+    border-color: rgba(79,172,254,0.3);
+  }
+  #login-overlay .error {
+    color: #ff6b6b;
+    font-size: 13px;
+    display: none;
+  }
+  #login-overlay .btn-login {
+    padding: 14px 48px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #080810;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: transform 0.2s;
+  }
+  #login-overlay .btn-login:hover {
+    transform: translateY(-2px);
+  }
+  .login-hint {
+    font-size: 12px;
+    color: #444466;
+    margin-top: 8px;
+  }
 </style>
 </head>
 <body>
+
+<!-- LOGIN -->
+<div id="login-overlay">
+  <div class="lock-icon">🔒</div>
+  <h2>Protótipos Confidenciais</h2>
+  <p>Esta página contém os protótipos dos sites de Nancy Hannah.<br>Digite a senha para acessar.</p>
+  <input type="password" id="senha-input" placeholder="Senha" onkeydown="if(event.key==='Enter') verificarSenha()">
+  <div class="error" id="erro-senha">Senha incorreta. Tente novamente.</div>
+  <button class="btn-login" onclick="verificarSenha()">Acessar Protótipos</button>
+  <div class="login-hint">Para uso interno — cantora e equipe</div>
+</div>
 
 <h1>Protótipos — Nancy Hannah</h1>
 <p class="sub">Seis versões de site para Miss. Nancy &amp; cantora Nancy Hannah.<br>Clique para visualizar cada uma.</p>
@@ -170,6 +252,19 @@
   Protótipos em discussão com Nancy — <em>não</em> são versões finais.<br>
   <a href="../auditoria-profissional.html" target="_blank">Ver relatório de auditoria →</a>
 </div>
+
+<script>
+function verificarSenha() {
+  var s = document.getElementById('senha-input').value;
+  if (s === 'joaozinhofilho10') {
+    document.getElementById('login-overlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  } else {
+    document.getElementById('erro-senha').style.display = 'block';
+  }
+}
+document.body.style.overflow = 'hidden';
+</script>
 
 </body>
 </html>
