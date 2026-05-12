@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protótipos — Nancy Hannah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a10;
+    color: #e0e0e8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 24px;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    color: #f0e8dc;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .sub {
+    color: #6666aa;
+    font-size: 14px;
+    margin-bottom: 48px;
+    text-align: center;
+    max-width: 500px;
+    line-height: 1.6;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    width: 100%;
+  }
+  .card {
+    background: #12121e;
+    border: 1px solid #1e1e30;
+    border-radius: 16px;
+    padding: 32px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .card:hover {
+    border-color: #4444aa;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .card .tag {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #6666aa;
+    margin-bottom: 12px;
+  }
+  .card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #f0e8dc;
+    margin-bottom: 4px;
+  }
+  .card .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 16px;
+  }
+  .badge-dark { background: #2a2a40; color: #aaa; }
+  .badge-gold { background: #c8a84e; color: #1a1a10; }
+  .badge-creme { background: #f5f0e6; color: #1a1a10; }
+  .badge-blue { background: #1a4a8a; color: #fff; }
+  .badge-purple { background: #5a2a8a; color: #fff; }
+  .badge-white { background: #eee; color: #1a1a10; }
+  .card .desc {
+    font-size: 13px;
+    color: #8888aa;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+  .section-label {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #4444aa;
+    margin-top: 16px;
+    margin-bottom: 4px;
+  }
+  .footer-note {
+    margin-top: 48px;
+    font-size: 12px;
+    color: #4444aa;
+    text-align: center;
+    max-width: 500px;
+    line-height: 1.8;
+  }
+  .footer-note a { color: #8888dd; }
+</style>
+</head>
+<body>
+
+<h1>Protótipos — Nancy Hannah</h1>
+<p class="sub">Seis versões de site para Miss. Nancy &amp; cantora Nancy Hannah.<br>Clique para visualizar cada uma.</p>
+
+<div class="grid">
+
+  <div class="section-label">Missionária Nancy — Ensino</div>
+
+  <a class="card" href="missionaria-nancy/index.html" target="_blank">
+    <div class="tag">Miss. Nancy · v1</div>
+    <h2>Dark Gold</h2>
+    <span class="badge badge-gold">★ Recomendado</span>
+    <div class="desc">Fundo escuro com detalhes dourados. Elegante, sofisticado, destaca o conteúdo de ensino.</div>
+  </a>
+
+  <a class="card" href="missionaria-nancy/v2.html" target="_blank">
+    <div class="tag">Miss. Nancy · v2</div>
+    <h2>Creme Premium</h2>
+    <span class="badge badge-creme">Claro</span>
+    <div class="desc">Fundo creme com tipografia serifada. Leve, clássico, leitura agradável.</div>
+  </a>
+
+  <a class="card" href="missionaria-nancy/v3.html" target="_blank">
+    <div class="tag">Miss. Nancy · v3</div>
+    <h2>Bold Dark</h2>
+    <span class="badge badge-dark">Escuro</span>
+    <div class="desc">Dark mode com tipografia bold. Contemporâneo, impacto visual forte.</div>
+  </a>
+
+  <div class="section-label">Nancy Hannah — Cantora</div>
+
+  <a class="card" href="nancy-hannah/index.html" target="_blank">
+    <div class="tag">Nancy Hannah · v1</div>
+    <h2>Azul Cobalto</h2>
+    <span class="badge badge-blue">★ Recomendado</span>
+    <div class="desc">Azul vibrante com elementos musicais. Profissional, moderno, energia de palco.</div>
+  </a>
+
+  <a class="card" href="nancy-hannah/v2.html" target="_blank">
+    <div class="tag">Nancy Hannah · v2</div>
+    <h2>Purple Vibrante</h2>
+    <span class="badge badge-purple">Colorido</span>
+    <div class="desc">Roxo vibrante com gradientes. Criativo, artístico, personalidade forte.</div>
+  </a>
+
+  <a class="card" href="nancy-hannah/v3.html" target="_blank">
+    <div class="tag">Nancy Hannah · v3</div>
+    <h2>Branco Minimalista</h2>
+    <span class="badge badge-white">Minimalista</span>
+    <div class="desc">Branco com tipografia limpa. Sofisticado, foco total no conteúdo.</div>
+  </a>
+
+</div>
+
+<div class="footer-note">
+  Protótipos em discussão com Nancy — <em>não</em> são versões finais.<br>
+  <a href="../auditoria-profissional.html" target="_blank">Ver relatório de auditoria →</a>
+</div>
+
+</body>
+</html>

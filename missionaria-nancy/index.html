@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missionária Nancy — Ministério de Ensino & Evangelismo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0f;
+    color: #e8e0d8;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(120,80,40,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(180,140,80,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(60,40,20,0.2) 0%, transparent 40%),
+      linear-gradient(180deg, #0a0a0f 0%, #14100c 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #c9a87e, #d4a574, #c9a87e, transparent);
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,168,126,0.25);
+    color: #c9a87e;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(4px);
+    background: rgba(201,168,126,0.06);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 600;
+    color: #f0e8dc;
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, #d4a574, #c9a87e, #e8c99a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero h2 {
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 300;
+    color: #a09080;
+    letter-spacing: 2px;
+    margin-bottom: 48px;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #d4a574, #b8895e);
+    color: #0a0a0f;
+    box-shadow: 0 4px 24px rgba(212,165,116,0.25);
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 40px rgba(212,165,116,0.35);
+  }
+  .btn-secondary {
+    border: 1px solid rgba(201,168,126,0.3);
+    color: #c9a87e;
+    background: rgba(201,168,126,0.06);
+    backdrop-filter: blur(4px);
+  }
+  .btn-secondary:hover {
+    background: rgba(201,168,126,0.12);
+    transform: translateY(-3px);
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #665544;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 24px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #c9a87e;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 600;
+    color: #f0e8dc;
+    margin-bottom: 24px;
+    line-height: 1.15;
+  }
+  .section-text {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #a09080;
+    max-width: 700px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #1a1510, #251e16);
+    border: 1px solid rgba(201,168,126,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #665544;
+    font-size: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(10,10,15,0.6));
+  }
+  .about-photo .icon-big {
+    position: relative;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  .about-content .name-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #f0e8dc;
+    margin-bottom: 4px;
+  }
+  .about-content .name-sub {
+    font-size: 14px;
+    color: #c9a87e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .about-content p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #a09080;
+    margin-bottom: 16px;
+  }
+  .about-content .quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: #c9a87e;
+    border-left: 3px solid rgba(201,168,126,0.3);
+    padding-left: 24px;
+    margin: 24px 0;
+    line-height: 1.7;
+  }
+
+  /* STUDIES */
+  .studies {
+    background:
+      radial-gradient(ellipse at 50% 0, rgba(120,80,40,0.06) 0%, transparent 60%);
+    padding: 100px 24px;
+    text-align: center;
+  }
+  .studies-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .studies-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 50px;
+    text-align: left;
+  }
+  .study-card {
+    background: linear-gradient(145deg, #14100c, #1a1510);
+    border: 1px solid rgba(201,168,126,0.08);
+    border-radius: 20px;
+    padding: 40px;
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .study-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .study-card .icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .study-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f0e8dc;
+    margin-bottom: 4px;
+  }
+  .study-card .count {
+    font-size: 13px;
+    color: #c9a87e;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .study-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #8a7a6a;
+    margin-bottom: 24px;
+  }
+  .study-card .btn {
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+
+  /* SOCIAL / CONTACT */
+  .contact-section {
+    text-align: center;
+  }
+  .social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #14100c, #1a1510);
+    border: 1px solid rgba(201,168,126,0.08);
+    text-decoration: none;
+    color: #e8e0d8;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.25s;
+    min-width: 200px;
+  }
+  .social-link:hover {
+    transform: translateY(-3px);
+    border-color: rgba(201,168,126,0.2);
+    background: #1c1610;
+  }
+  .social-link .soc-icon {
+    font-size: 22px;
+    width: 28px;
+    text-align: center;
+  }
+  .social-link .soc-label {
+    color: #8a7a6a;
+    font-weight: 400;
+  }
+
+  .contact-extra {
+    margin-top: 40px;
+    color: #8a7a6a;
+    font-size: 15px;
+    line-height: 2;
+  }
+  .contact-extra a {
+    color: #c9a87e;
+    text-decoration: none;
+  }
+  .contact-extra a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    color: #4a3a2a;
+    font-size: 13px;
+    border-top: 1px solid rgba(201,168,126,0.06);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  footer span { color: #c9a87e; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .studies-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 40px; }
+    .btn { padding: 14px 28px; font-size: 14px; }
+    .section { padding: 60px 20px; }
+    .social-link { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Ministério de Ensino &amp; Evangelismo</div>
+  <h1><span class="highlight">Missionária</span><br>Nancy</h1>
+  <h2>Pregando o Evangelho &bull; Ensinando a Palavra</h2>
+  <div class="hero-buttons">
+    <a href="#estudos" class="btn btn-primary">📖 Explorar Estudos</a>
+    <a href="#sobre" class="btn btn-secondary">Conhecer Ministério</a>
+    <a href="#contato" class="btn btn-secondary">📬 Contato</a>
+  </div>
+  <div class="hero-scroll">Role para explorar</div>
+</section>
+
+<!-- SOBRE -->
+<section class="section" id="sobre">
+  <div class="about-grid">
+    <div class="about-photo">
+      <span class="icon-big">✝️</span>
+    </div>
+    <div class="about-content">
+      <div class="section-label">Quem é</div>
+      <div class="name-title">Missionária Nancy</div>
+      <div class="name-sub">Nancy Aparecida Machado</div>
+      <p>
+        Desde a infância na igreja, evangelizando e levando a mensagem do Reino,
+        a Missionária Nancy tem dedicado sua vida a anunciar o amor de Jesus Cristo.
+        Conduzida pelo Espírito Santo, sua trajetória é marcada por sucessos e
+        percalços que a fortaleceram na fé.
+      </p>
+      <p>
+        Com um chamado profético para levar a Palavra "aos quatro cantos desta terra",
+        ela combina o ensino bíblico sistematizado com a unção do evangelismo,
+        alcançando vidas através do estudo das Escrituras e da pregação.
+      </p>
+      <div class="quote">
+        "Sou conduzida e tudo que faço é para Deus e por Deus. Oro para que
+        todas as minhas palavras alcancem o coração das pessoas, levando-as
+        para ainda mais perto de Deus."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTUDOS -->
+<section class="studies" id="estudos">
+  <div class="studies-inner">
+    <div class="section-label">Estudos Bíblicos</div>
+    <h2 class="section-title" style="text-align:center;">Estantes da Palavra</h2>
+    <p class="section-text" style="margin:0 auto 10px;text-align:center;">
+      Mergulhe nas Escrituras através dos estudos organizados por ela.
+      Clique em uma estante e explore livro por livro.
+    </p>
+
+    <div class="studies-grid">
+      <div class="study-card">
+        <span class="icon">📜</span>
+        <h3>Antigo Testamento</h3>
+        <div class="count">39 Livros</div>
+        <p>Gênesis a Malaquias — profecias, história, sabedoria e a preparação para a vinda do Messias.</p>
+        <a href="https://godintec.github.io/missionarianancyat/"
+           target="_blank" class="btn btn-primary">
+          📖 Acessar Estante
+        </a>
+      </div>
+
+      <div class="study-card">
+        <span class="icon">📖</span>
+        <h3>Novo Testamento</h3>
+        <div class="count">27 Livros</div>
+        <p>Mateus a Apocalipse — a vida de Jesus, a igreja primitiva e a esperança da volta do Senhor.</p>
+        <a href="https://godintec.github.io/missionarianancy/"
+           target="_blank" class="btn btn-primary">
+          📖 Acessar Estante
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="section contact-section" id="contato">
+  <div class="section-label">Redes &amp; Contato</div>
+  <h2 class="section-title" style="text-align:center;">Acompanhe o Ministério</h2>
+  <p class="section-text" style="margin:0 auto;text-align:center;">
+    Siga a Missionária Nancy nas redes sociais e acompanhe as novidades.
+  </p>
+
+  <div class="social-grid">
+    <a href="https://www.instagram.com/nancyhannahmusic" target="_blank" class="social-link">
+      <span class="soc-icon">📷</span>
+      Instagram <span class="soc-label">@nancyhannahmusic</span>
+    </a>
+    <a href="https://www.youtube.com/@NANCYHANNAH" target="_blank" class="social-link">
+      <span class="soc-icon">▶</span>
+      YouTube <span class="soc-label">@NANCYHANNAH</span>
+    </a>
+    <a href="https://www.tiktok.com/@nancyhannahoficial" target="_blank" class="social-link">
+      <span class="soc-icon">🎵</span>
+      TikTok <span class="soc-label">@nancyhannahoficial</span>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100079675090322" target="_blank" class="social-link">
+      <span class="soc-icon">f</span>
+      Facebook <span class="soc-label">Nancy Hannah</span>
+    </a>
+  </div>
+
+  <div class="contact-extra">
+    📧 <a href="mailto:nancyhannah@email.com">nancyhannah@email.com</a><br>
+    🎤 Conheça também o ministério musical: <a href="../nancy-hannah/index.html">Nancy Hannah Cantora</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 &mdash; Ministério Missionária Nancy &bull; <span>Graça e Paz</span>
+</footer>
+
+</body>
+</html>

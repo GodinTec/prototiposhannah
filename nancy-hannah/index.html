@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nancy Hannah — Cantora & Compositora Gospel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #080810;
+    color: #e0e0f0;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(79,172,254,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, rgba(160,80,220,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(0,242,254,0.03) 0%, transparent 40%),
+      linear-gradient(180deg, #080810 0%, #0c0c1a 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #4facfe, #00f2fe, #4facfe, transparent);
+  }
+  .hero-particles {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-particles span {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: rgba(79,172,254,0.2);
+    border-radius: 50%;
+    animation: float 6s infinite;
+  }
+  .hero-particles span:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+  .hero-particles span:nth-child(2) { top: 60%; left: 80%; animation-delay: 1s; width: 6px; height: 6px; }
+  .hero-particles span:nth-child(3) { top: 30%; left: 70%; animation-delay: 2s; }
+  .hero-particles span:nth-child(4) { top: 70%; left: 20%; animation-delay: 3s; width: 5px; height: 5px; }
+  .hero-particles span:nth-child(5) { top: 10%; left: 50%; animation-delay: 4s; }
+  @keyframes float {
+    0%,100% { transform: translateY(0) scale(1); opacity: 0.2; }
+    50% { transform: translateY(-40px) scale(1.5); opacity: 0.6; }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(79,172,254,0.2);
+    color: #4facfe;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(4px);
+    background: rgba(79,172,254,0.05);
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffffff 0%, #4facfe 50%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.06;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h2 {
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 300;
+    color: #8888aa;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h3 {
+    font-size: clamp(14px, 1.3vw, 18px);
+    font-weight: 300;
+    color: #6666aa;
+    letter-spacing: 2px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary-blue {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #080810;
+    box-shadow: 0 4px 24px rgba(79,172,254,0.25);
+  }
+  .btn-primary-blue:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 40px rgba(79,172,254,0.35);
+  }
+  .btn-secondary {
+    border: 1px solid rgba(79,172,254,0.2);
+    color: #4facfe;
+    background: rgba(79,172,254,0.05);
+    backdrop-filter: blur(4px);
+  }
+  .btn-secondary:hover {
+    background: rgba(79,172,254,0.1);
+    transform: translateY(-3px);
+  }
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .hero-stat .lbl {
+    font-size: 12px;
+    color: #6666aa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #444466;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 24px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #4facfe;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 600;
+    color: #f0f0ff;
+    margin-bottom: 24px;
+    line-height: 1.15;
+  }
+  .section-text {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #8888aa;
+    max-width: 700px;
+  }
+
+  /* BIO */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .bio-photo {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #12122a, #1a1a3a);
+    border: 1px solid rgba(79,172,254,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bio-photo::after {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, rgba(79,172,254,0.1), transparent, rgba(0,242,254,0.1));
+    z-index: -1;
+  }
+  .bio-content p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #9999bb;
+    margin-bottom: 16px;
+  }
+  .bio-content .highlight-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #f0f0ff;
+    margin-bottom: 4px;
+  }
+  .bio-content .highlight-sub {
+    font-size: 14px;
+    color: #4facfe;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .bio-content .quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: #4facfe;
+    border-left: 3px solid rgba(79,172,254,0.2);
+    padding-left: 24px;
+    margin: 24px 0;
+    line-height: 1.7;
+  }
+
+  /* DISCOGRAPHY */
+  .discography {
+    background:
+      radial-gradient(ellipse at 50% 0, rgba(79,172,254,0.03) 0%, transparent 60%);
+    padding: 100px 24px;
+  }
+  .discography-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .album-card {
+    background: linear-gradient(145deg, #12122a, #1a1a3a);
+    border: 1px solid rgba(79,172,254,0.06);
+    border-radius: 24px;
+    padding: 48px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+  }
+  .album-cover {
+    width: 200px;
+    height: 200px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #1a1a44, #2a2a5a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .album-cover::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(8,8,16,0.4));
+    border-radius: 16px;
+  }
+  .album-info h3 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #f0f0ff;
+    margin-bottom: 4px;
+  }
+  .album-info .album-meta {
+    font-size: 14px;
+    color: #6666aa;
+    margin-bottom: 20px;
+  }
+  .album-info .album-meta span {
+    color: #4facfe;
+  }
+  .tracklist {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+  .tracklist li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(79,172,254,0.03);
+    font-size: 15px;
+    color: #bbbbdd;
+    transition: background 0.2s;
+  }
+  .tracklist li:hover {
+    background: rgba(79,172,254,0.08);
+  }
+  .tracklist .track-num {
+    width: 24px;
+    color: #4facfe;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .tracklist .track-name { flex: 1; }
+  .tracklist .track-icon {
+    opacity: 0.4;
+    font-size: 16px;
+  }
+  .album-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .album-links .btn {
+    padding: 10px 22px;
+    font-size: 13px;
+  }
+
+  /* SINGLES */
+  .singles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .single-card {
+    background: linear-gradient(145deg, #12122a, #1a1a3a);
+    border: 1px solid rgba(79,172,254,0.06);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.25s;
+  }
+  .single-card:hover {
+    transform: translateY(-4px);
+  }
+  .single-card .single-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .single-card h4 {
+    font-size: 16px;
+    color: #f0f0ff;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .single-card p {
+    font-size: 13px;
+    color: #6666aa;
+    margin-bottom: 12px;
+  }
+  .single-card .tag-year {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    background: rgba(79,172,254,0.1);
+    color: #4facfe;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .single-card .tag-karaoke {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    background: rgba(160,80,220,0.1);
+    color: #a050dc;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  /* SOCIAL */
+  .social-section { text-align: center; }
+  .social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #12122a, #1a1a3a);
+    border: 1px solid rgba(79,172,254,0.06);
+    text-decoration: none;
+    color: #e0e0f0;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.25s;
+    min-width: 200px;
+  }
+  .social-link:hover {
+    transform: translateY(-3px);
+    border-color: rgba(79,172,254,0.15);
+    background: #16163a;
+  }
+  .social-link .soc-icon { font-size: 22px; width: 28px; text-align: center; }
+  .social-link .soc-label { color: #6666aa; font-weight: 400; }
+
+  .stream-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .stream-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #12122a, #1a1a3a);
+    border: 1px solid rgba(79,172,254,0.08);
+    text-decoration: none;
+    color: #bbbbdd;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .stream-link:hover {
+    background: #16163a;
+    transform: translateY(-2px);
+  }
+
+  .contact-extra {
+    margin-top: 40px;
+    color: #6666aa;
+    font-size: 15px;
+    line-height: 2;
+  }
+  .contact-extra a { color: #4facfe; text-decoration: none; }
+  .contact-extra a:hover { text-decoration: underline; }
+
+  /* PRESS */
+  .press-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .press-card {
+    background: linear-gradient(145deg, #12122a, #1a1a3a);
+    border: 1px solid rgba(79,172,254,0.06);
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.25s;
+  }
+  .press-card:hover { transform: translateY(-4px); }
+  .press-card .press-source {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4facfe;
+    margin-bottom: 8px;
+  }
+  .press-card h4 {
+    font-size: 15px;
+    color: #f0f0ff;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .press-card p {
+    font-size: 13px;
+    color: #8888aa;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .press-card a {
+    color: #4facfe;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .press-card a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    color: #333355;
+    font-size: 13px;
+    border-top: 1px solid rgba(79,172,254,0.05);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  footer span { color: #4facfe; }
+
+  @media (max-width: 768px) {
+    .bio-grid { grid-template-columns: 1fr; gap: 40px; }
+    .album-card { grid-template-columns: 1fr; padding: 28px; }
+    .album-cover { width: 140px; height: 140px; margin: 0 auto; font-size: 44px; }
+    .hero h1 { font-size: 40px; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; justify-content: center; }
+    .btn { padding: 14px 28px; font-size: 14px; }
+    .section { padding: 60px 20px; }
+    .social-link { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-particles">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-badge">Cantora &amp; Compositora Gospel</div>
+  <h1>Nancy Hannah</h1>
+  <h2>Religar Records &bull; Warner Chappell</h2>
+  <h3>"Um vaso talhado pelas mãos do Senhor"</h3>
+  <div class="hero-buttons">
+    <a href="#discografia" class="btn btn-primary-blue">🎵 Ouvir Agora</a>
+    <a href="#sobre" class="btn btn-secondary">Conhecer</a>
+    <a href="#redes" class="btn btn-secondary">Redes Sociais</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">6,3K</div>
+      <div class="lbl">YouTube</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">14K</div>
+      <div class="lbl">Instagram</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">24K</div>
+      <div class="lbl">TikTok</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">+100</div>
+      <div class="lbl">Composições</div>
+    </div>
+  </div>
+  <div class="hero-scroll">Role para conhecer</div>
+</section>
+
+<!-- SOBRE -->
+<section class="section" id="sobre">
+  <div class="bio-grid">
+    <div class="bio-photo">🎤</div>
+    <div class="bio-content">
+      <div class="section-label">Biografia</div>
+      <div class="highlight-name">Nancy Hannah</div>
+      <div class="highlight-sub">Nancy Aparecida Machado</div>
+      <p>
+        Cantora e compositora gospel, Nancy Hannah fez a sua <strong>primeira canção aos cinco anos de idade</strong>.
+        Hoje possui aproximadamente <strong>100 composições</strong>, todas com mensagens inspiradas pelo
+        Espírito Santo — palavras de exortação, exaltação, adoração e avisos para as igrejas.
+      </p>
+      <p>
+        Seu EP de estreia homônimo, lançado pelo selo <strong>Religar Records</strong> com distribuição
+        da <strong>Warner Chappell</strong>, apresenta cinco canções que apontam para Jesus:
+        "Monte das Oliveiras", "Mora em Meu Altar", "Deus Não Mudou", "Testemunho" e "Oh! Jerusalém".
+      </p>
+      <p>
+        Produzido por <strong>Wilson Gava</strong> (mestre em fonoaudiologia, coach vocal e artístico),
+        o EP traz 10 faixas — cinco músicas inéditas e cinco playbacks — para que as pessoas possam
+        cantar e anunciar a mensagem do Reino.
+      </p>
+      <div class="quote">
+        "Saber de onde vim e para onde vou, sem perder minha essência e minhas raízes.
+        Ser humilde e honesta sempre e fazer incondicionalmente o que o Pai, o Filho e
+        o Espírito Santo me ordenarem é a minha vida."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOGRAFIA -->
+<section class="discography" id="discografia">
+  <div class="discography-inner">
+    <div class="section-label">Discografia</div>
+    <h2 class="section-title">Música &amp; Adoração</h2>
+    <p class="section-text">
+      Conheça o trabalho musical de Nancy Hannah. Ouça nas plataformas digitais.
+    </p>
+
+    <!-- EP -->
+    <div class="album-card">
+      <div class="album-cover">💿</div>
+      <div class="album-info">
+        <h3>Nancy Hannah</h3>
+        <div class="album-meta">EP &bull; 2024 &bull; <span>Religar Records / Warner Chappell</span></div>
+        <ul class="tracklist">
+          <li><span class="track-num">01</span><span class="track-name">Monte das Oliveiras</span><span class="track-icon">🎧</span></li>
+          <li><span class="track-num">02</span><span class="track-name">Mora em Meu Altar</span><span class="track-icon">🎧</span></li>
+          <li><span class="track-num">03</span><span class="track-name">Deus Não Mudou</span><span class="track-icon">🎧</span></li>
+          <li><span class="track-num">04</span><span class="track-name">Testemunho</span><span class="track-icon">🎧</span></li>
+          <li><span class="track-num">05</span><span class="track-name">Oh! Jerusalém</span><span class="track-icon">🎧</span></li>
+        </ul>
+        <div class="album-links">
+          <a href="https://open.spotify.com/album/5h2aYVwg4mcNs5RAUnyaun" target="_blank" class="btn btn-primary-blue">🎧 Spotify</a>
+          <a href="https://music.apple.com/album/1715149871" target="_blank" class="btn btn-secondary">🍎 Apple Music</a>
+          <a href="https://deezer.com/album/509022631" target="_blank" class="btn btn-secondary">▶ Deezer</a>
+          <a href="https://tidal.com/album/326971569" target="_blank" class="btn btn-secondary">🌊 Tidal</a>
+          <a href="https://music.amazon.com/albums/B0CMMX8N76" target="_blank" class="btn btn-secondary">📀 Amazon Music</a>
+          <a href="https://www.youtube.com/@NANCYHANNAH" target="_blank" class="btn btn-secondary">▶ YouTube</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Singles -->
+    <h3 style="color:#f0f0ff;font-size:22px;font-weight:600;margin-top:60px;margin-bottom:8px;">Singles</h3>
+    <p class="section-text" style="margin-bottom:0;">Lançamentos individuais com suas respectivas versões playback.</p>
+
+    <div class="singles-grid">
+      <div class="single-card">
+        <span class="single-icon">⛰️</span>
+        <h4>Monte das Oliveiras</h4>
+        <p>Single de estreia</p>
+        <span class="tag-year">2023</span>
+        <span class="tag-karaoke">Karaokê</span>
+      </div>
+      <div class="single-card">
+        <span class="single-icon">🕊️</span>
+        <h4>Mora em Meu Altar</h4>
+        <p>O Espírito Santo em nós</p>
+        <span class="tag-year">2024</span>
+        <span class="tag-karaoke">Karaokê</span>
+      </div>
+      <div class="single-card">
+        <span class="single-icon">🔥</span>
+        <h4>Deus Não Mudou</h4>
+        <p>O mesmo ontem, hoje e sempre</p>
+        <span class="tag-year">2024</span>
+        <span class="tag-karaoke">Karaokê</span>
+      </div>
+      <div class="single-card">
+        <span class="single-icon">📖</span>
+        <h4>Testemunho</h4>
+        <p>O vazio espiritual sem Deus</p>
+        <span class="tag-year">2024</span>
+        <span class="tag-karaoke">Karaokê</span>
+      </div>
+      <div class="single-card">
+        <span class="single-icon">🏛️</span>
+        <h4>Oh! Jerusalém</h4>
+        <p>Reconhecei que Ele é o Senhor</p>
+        <span class="tag-year">2024</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPRENSA -->
+<section class="section" id="imprensa">
+  <div class="section-label">Na Mídia</div>
+  <h2 class="section-title">O que dizem sobre Nancy</h2>
+  <div class="press-grid">
+    <div class="press-card">
+      <div class="press-source">Gazeta Evangélica</div>
+      <h4>"Nancy Hannah, nome que define a cantora e seu primeiro álbum"</h4>
+      <p>Um EP de cinco canções que apontam para Jesus em mensagens que exortam e abençoam.</p>
+      <a href="https://www.gazetaevangelica.com/post/nancy-hannah-nome-que-define-a-cantora-e-seu-primeiro-%C3%A1lbum" target="_blank">Ler matéria →</a>
+    </div>
+    <div class="press-card">
+      <div class="press-source">Show Gospel</div>
+      <h4>Estreia com EP pela Religar Records e Warner Chappell</h4>
+      <p>Dez faixas, sendo cinco canções inéditas e cinco playbacks para o povo cantar.</p>
+      <a href="https://showgospel.com.br/nancy-hannah-nome-que-define-a-cantora-e-seu-primeiro-album/" target="_blank">Ler matéria →</a>
+    </div>
+    <div class="press-card">
+      <div class="press-source">Tribuna Online (ES)</div>
+      <h4>Estreia de Nancy Hannah na coluna Religião</h4>
+      <p>Lançamento do EP com cinco singles celebrando a grandeza do sacrifício de Jesus.</p>
+      <a href="https://tribunaonline.com.br/coluna/religiao/estreia-de-nancy-hannah-164305" target="_blank">Ler matéria →</a>
+    </div>
+  </div>
+</section>
+
+<!-- REDES -->
+<section class="section social-section" id="redes">
+  <div class="section-label">Redes &amp; Streaming</div>
+  <h2 class="section-title" style="text-align:center;">Acompanhe Nancy Hannah</h2>
+  <p class="section-text" style="margin:0 auto;text-align:center;">
+    Siga nas redes sociais e ouça nas plataformas digitais.
+  </p>
+
+  <div class="stream-grid">
+    <a href="https://open.spotify.com/album/5h2aYVwg4mcNs5RAUnyaun" target="_blank" class="stream-link">🎧 Spotify</a>
+    <a href="https://music.apple.com/album/1715149871" target="_blank" class="stream-link">🍎 Apple Music</a>
+    <a href="https://deezer.com/album/509022631" target="_blank" class="stream-link">▶ Deezer</a>
+    <a href="https://tidal.com/album/326971569" target="_blank" class="stream-link">🌊 Tidal</a>
+    <a href="https://music.amazon.com/albums/B0CMMX8N76" target="_blank" class="stream-link">📀 Amazon Music</a>
+    <a href="https://www.youtube.com/@NANCYHANNAH" target="_blank" class="stream-link">▶ YouTube Music</a>
+    <a href="https://tinyurl.com/66w2xs85" target="_blank" class="stream-link">🔗 Linktree</a>
+  </div>
+
+  <div class="social-grid">
+    <a href="https://www.instagram.com/nancyhannahmusic" target="_blank" class="social-link">
+      <span class="soc-icon">📷</span>
+      Instagram <span class="soc-label">@nancyhannahmusic</span>
+    </a>
+    <a href="https://www.youtube.com/@NANCYHANNAH" target="_blank" class="social-link">
+      <span class="soc-icon">▶</span>
+      YouTube <span class="soc-label">@NANCYHANNAH</span>
+    </a>
+    <a href="https://www.tiktok.com/@nancyhannahoficial" target="_blank" class="social-link">
+      <span class="soc-icon">🎵</span>
+      TikTok <span class="soc-label">@nancyhannahoficial</span>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100079675090322" target="_blank" class="social-link">
+      <span class="soc-icon">f</span>
+      Facebook <span class="soc-label">Nancy Hannah</span>
+    </a>
+    <a href="https://linktr.ee/nancyhannahoficial" target="_blank" class="social-link">
+      <span class="soc-icon">🔗</span>
+      Linktree <span class="soc-label">todos os links</span>
+    </a>
+  </div>
+
+  <div class="contact-extra">
+    📧 <a href="mailto:nancyhannah@email.com">nancyhannah@email.com</a><br>
+    🙏 Conheça também o ministério de ensino: <a href="../missionaria-nancy/index.html">Missionária Nancy</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 &mdash; Nancy Hannah &bull; <span>Religar Records / Warner Chappell</span> &bull; Soli Deo Gloria
+</footer>
+
+</body>
+</html>
